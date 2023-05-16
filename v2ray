@@ -1,0 +1,31 @@
+apt update && apt upgrade -y
+apt install curl socat -y
+curl https://get.acme.sh | sh
+~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+~/.acme.sh/acme.sh --register-account -m email
+~/.acme.sh/acme.sh --issue -d hostname --standalone
+~/.acme.sh/acme.sh --installcert -d hostname --key-file /root/apiprivate.key --fullchain-file /root/apicert.crt
+bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+确认是否继续? Confirm whether it continues
+y
+请设置您的账户名 Please set your account name
+name
+请设置您的账户密码 Please set your account password
+password
+请设置面板访问端口 Please set the panel access port
+port
+===========================================
+https   http
+443     8080
+2053    8880
+2083    2052
+2087    2082
+2096    2086
+8443    2095
+===========================================
+vmess
+ws
+tls
+/root/<>.crt
+/root/<>.key
+
